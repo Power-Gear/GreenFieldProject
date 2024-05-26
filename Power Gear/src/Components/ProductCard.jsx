@@ -2,11 +2,11 @@ import React from 'react';
 import { Card, CardContent, Typography, Button } from '@mui/material';
 import { useNavigate, useLocation } from 'react-router-dom';
 
-const ProductCard = ({ product, handleCardClick }) => {
+const ProductCard = ({ product, CardClick }) => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const handleAddToCart = (e) => {
+  const AddToCart = (e) => {
     e.stopPropagation(); // Prevent triggering the card click event
 
     const user = JSON.parse(localStorage.getItem('User'));
@@ -29,7 +29,7 @@ const ProductCard = ({ product, handleCardClick }) => {
   };
 
   return (
-    <Card onClick={() => handleCardClick(product.id)}>
+    <Card onClick={() => CardClick(product.id)}>
       <CardContent>
         <img
           src={product.picture}
@@ -57,7 +57,7 @@ const ProductCard = ({ product, handleCardClick }) => {
             border: 'solid',
             borderColor: '#023047',
           }}
-          onClick={handleAddToCart}
+          onClick={AddToCart}
         >
           <b> Add to Cart </b>
         </Button>

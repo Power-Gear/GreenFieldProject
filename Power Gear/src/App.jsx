@@ -11,6 +11,8 @@ import UsersPage from './Components/Admin/UsersPage.jsx';
 import SignUp from "./Components/SignUp.jsx";
 import OrderPlaced from "./Components/OrderPlaced.jsx";
 import Profile from "./Components/Profile.jsx";
+import OrdersPage from "./Components/Admin/OrdersPage.jsx";
+import OneOrder from "./Components/Admin/OneOrder.jsx";
 
 function App() {
   return (
@@ -27,9 +29,10 @@ function App() {
           <Route path="admin" element={<AdminLayout />}/>
           <Route path="admin/products" element={<ProductsPage />} />
           <Route path="admin/users" element={<UsersPage />} />
-          {/* <Route path="admin/orders" element={<OrdersPage />} /> */}
+          <Route path="admin/orders" element={<OrdersPage />} /> 
           <Route path="OrderPlaced" element={<OrderPlaced />} />
           <Route path="Profile" element={<Profile />} />
+          <Route path="admin/orders/:orderId" element={<OneOrder />} />
         </Routes>
       </BrowserRouter>
     </div>

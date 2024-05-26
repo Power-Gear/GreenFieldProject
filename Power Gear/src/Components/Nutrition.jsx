@@ -24,10 +24,10 @@ const SportsWear = () => {
       });
   }, []);
 
-  const handleSeeMore = () => {
+  const SeeMore = () => {
     setShowAll(!showAll);
   };
-  const handleCardClick = (id) => {
+  const CardClick = (id) => {
     navigate(`/product/${id}`);
   };
   return (
@@ -37,7 +37,7 @@ const SportsWear = () => {
       <Typography variant="h4" gutterBottom>
         Nutrition
         <Button
-          onClick={handleSeeMore}
+          onClick={SeeMore}
           variant="outlined"
           color="primary"
           style={{
@@ -55,7 +55,7 @@ const SportsWear = () => {
       <Grid container spacing={2}>
         {products.slice(0, showAll ? products.length : 4).map((product) => (
           <Grid item xs={12} sm={6} md={3} key={product.id}>
-            <ProductCard product={product} handleCardClick={handleCardClick} />
+            <ProductCard product={product} CardClick={CardClick} />
           </Grid>
         ))}
       </Grid>

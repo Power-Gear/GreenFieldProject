@@ -6,11 +6,11 @@ function AboutUs() {
     <div style={{ color: "#FFB703", backgroundColor: "#023047" }}>
       <Navbar />
       <Typography variant="h2" gutterBottom style={{ marginLeft: "50px" ,marginTop:"50px"}}>
-        About Us
+      Power Gear: <br /> Fueling Your Potential
       </Typography>
       
           <Typography style={{ color: "#e0e1dd", marginLeft: "50px" ,paddingBottom:"50px"}}>
-          <h1>Power Gear: Fueling Your Potential</h1>
+          
   <h2>Our Story</h2>
   <ul>
     <li>Born from the raw power of athletes pushing their limits.</li>

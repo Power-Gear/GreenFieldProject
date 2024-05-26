@@ -1,6 +1,25 @@
 const db = require("./config");
 
 module.exports = {
+  
+addOrder : async (req, res) => {
+  try {
+    const { customerName, products, totalAmount, quantity,status, date } = req.body;
+    const newOrder = await db.Order.create({
+      customerName,
+      products,
+      totalAmount,
+      status,
+      quantity,
+      date
+    });
+
+    res.status(201).json({ success: true, message: 'Order added successfully', order: newOrder });
+  } catch (error) {
+    console.error('Error adding order:', error);
+    res.status(500).json({ success: false, message: 'Failed to add order', error: error.message });
+  }
+},
     getOrder: async (req, res) => {
         const OrderId = req.params.orderId;
         try {
@@ -14,6 +33,7 @@ module.exports = {
           res.status(500).send("Error fetching order");
         }
       },
+
        
     getAllorders: async (req,res)=> {
         try {
@@ -25,14 +45,21 @@ module.exports = {
         }
       },
 
-      addOrder: async (req, res) => {
-        const newOrderData = req.body;
-        try {
-          const order = await db.Order.create(newOrderData);
-          res.status(201).send({ message: "Order created successfully", orderId: order.id });
-        } catch (error) {
-          console.error(error);
-          res.status(500).send("Error adding order");
+     markOrder: async (req, res) => {
+      const OrderId = req.params.orderId;
+      const { status } = req.body;
+      try {
+        const order = await db.Order.findByPk(OrderId);
+        if (!order) {
+          return res.status(404).send('Order not found');
         }
+        order.status = status;
+        await order.save();
+        res.json({ success: true, message: 'Order status updated successfully', order });
+      } catch (error) {
+        console.error('Error updating order status:', error);
+        res.status(500).json({ success: false, message: 'Failed to update order status', error: error.message });
       }
+    }
+
 }

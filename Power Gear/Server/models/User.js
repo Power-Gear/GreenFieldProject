@@ -19,6 +19,14 @@ const User = connection.define('User', {
     type:DataTypes.STRING,
     allowNull:false,
   },
+  adress:{
+    type:DataTypes.STRING,
+    allowNull:false
+  },
+  Phone:{
+    type:DataTypes.INTEGER,
+    allowNull:false
+  }
   
 });
 return User

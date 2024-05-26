@@ -49,8 +49,7 @@ module.exports = {
       if (!user) {
         return res.status(404).send("User not found");
       }
-      const hash = await bcrypt.hash(updatedUserData.password, 10);
-      updatedUserData.password = hash;
+      
       const updatedUser = await user.update(updatedUserData);
       res.json(updatedUser);
     } catch (error) {

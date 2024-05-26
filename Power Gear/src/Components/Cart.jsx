@@ -12,13 +12,13 @@ const Cart = () => {
     const items = JSON.parse(localStorage.getItem('cartItems')) || [];
     setCartItems(items);
   }, []);
-  const handleRemoveItem = (itemId) => {
+  const RemoveItem = (itemId) => {
     const updatedCartItems = cartItems.filter((item) => item.id !== itemId);
     setCartItems(updatedCartItems);
     localStorage.setItem('cartItems', JSON.stringify(updatedCartItems));
   };
 
-  const handleDecreaseQuantity = (itemId) => {
+  const DecreaseQuantity = (itemId) => {
     const updatedCartItems = cartItems.map((item) => {
       if (item.id === itemId && item.quantity > 1) {
         return { ...item, quantity: item.quantity - 1 };
@@ -29,7 +29,7 @@ const Cart = () => {
     localStorage.setItem('cartItems', JSON.stringify(updatedCartItems));
   };
 
-  const handleIncreaseQuantity = (itemId) => {
+  const IncreaseQuantity = (itemId) => {
     const updatedCartItems = cartItems.map((item) => {
       if (item.id === itemId) {
         return { ...item, quantity: item.quantity + 1 };
@@ -47,14 +47,13 @@ const Cart = () => {
     return cartItems.reduce((total, item) => total + item.quantity, 0);
   };
 
-  const handleProceedToBuy = async () => {
+  const ProceedToBuy = async () => {
     const itemId=cartItems.map((item)=>{return [item.id,item.quantity] })
     const User=JSON.parse	(localStorage.getItem('User'))
     
     const orderData = {
       
       products:JSON.stringify(itemId),
-      price: '0' ,
       quantity: getTotalQuantity(),
       totalAmount: getTotalPrice(),
       status:'pending',
@@ -115,7 +114,7 @@ const Cart = () => {
                   <Button
                   variant="contained"
                   size="small"
-                  onClick={() => handleRemoveItem(item.id)}
+                  onClick={() => RemoveItem(item.id)}
                   style={{
                     color: '#FFB703',
                     backgroundColor: '#6a040f',
@@ -132,10 +131,10 @@ const Cart = () => {
                 </Typography>
                 <Typography variant="body1" gutterBottom>
                   Quantity: 
-                  <Button size="small" onClick={() => handleDecreaseQuantity(item.id)}>-</Button>
+                  <Button size="small" onClick={() => DecreaseQuantity(item.id)}>-</Button>
 
                   {item.quantity}                 
-                   <Button size="small" onClick={() => handleIncreaseQuantity(item.id)}>+</Button>
+                   <Button size="small" onClick={() => IncreaseQuantity(item.id)}>+</Button>
 
                 </Typography>
                 <Typography variant="body1" gutterBottom>
@@ -168,7 +167,7 @@ const Cart = () => {
           
           
         }}
-        onClick={handleProceedToBuy}
+        onClick={ProceedToBuy}
       >
         Proceed to Buy
       </Button>

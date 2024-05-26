@@ -32,15 +32,15 @@ const Login = ({ changeView }) => {
     const navigate=useNavigate();
     const classes = useStyles({ background: 'decoded_base64_image_here' })
 
-    const handleEmailChange = (e) => {
+    const EmailChange = (e) => {
         setEmail(e.target.value);
     };
 
-    const handlePasswordChange = (e) => {
+    const PasswordChange = (e) => {
         setPassword(e.target.value);
     };
 
-    const handleSubmit = async (e) => {
+    const Submit = async (e) => {
         e.preventDefault();
         try {
             const response = await axios.post('http://localhost:5000/User/log', { email, password });
@@ -54,7 +54,7 @@ const Login = ({ changeView }) => {
         }
     };
 
-    const handleSignUp = () => {
+    const SignUp = () => {
         navigate('/SignUp');
     };
 
@@ -67,7 +67,7 @@ const Login = ({ changeView }) => {
                 }}>
                     Login
                 </Typography>
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={Submit}>
                     <TextField
                         margin="normal"
                         required
@@ -78,7 +78,7 @@ const Login = ({ changeView }) => {
                         autoComplete="email"
                         autoFocus
                         value={email}
-                        onChange={handleEmailChange}
+                        onChange={EmailChange}
                     />
                     <TextField
                         margin="normal"
@@ -90,7 +90,7 @@ const Login = ({ changeView }) => {
                         id="password"
                         autoComplete="current-password"
                         value={password}
-                        onChange={handlePasswordChange}
+                        onChange={PasswordChange}
                     />
                     {error && <Alert severity="error" sx={{ mt: 2 }}>{error}</Alert>}
                     <Button
@@ -105,7 +105,7 @@ const Login = ({ changeView }) => {
                 </form>
                 <Typography variant="body2" align="center">
                     No account?
-                    <Button onClick={handleSignUp} variant="text" color="secondary">
+                    <Button onClick={SignUp} variant="text" color="secondary">
                         Sign Up
                     </Button>
                 </Typography>

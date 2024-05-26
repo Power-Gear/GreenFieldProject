@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Typography, Grid, Card, CardContent, Button } from '@mui/material';
+import { Typography, Grid} from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import ProductCard from './ProductCard';
 
@@ -23,7 +23,7 @@ const FeaturedProducts = () => {
       });
   }, []);
 
-  const handleCardClick = (id) => {
+  const CardClick = (id) => {
     navigate(`/product/${id}`);
   };
 
@@ -35,7 +35,7 @@ const FeaturedProducts = () => {
       <Grid container spacing={2}>
         {products.map(product => (
           <Grid item xs={12} sm={6} md={3} key={product.id}>
-            <ProductCard product={product} handleCardClick={handleCardClick} />
+            <ProductCard product={product} CardClick={CardClick} />
           </Grid>
         ))}
       </Grid>

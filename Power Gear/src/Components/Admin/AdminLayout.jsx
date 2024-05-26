@@ -1,12 +1,13 @@
 import React from 'react';
 import { Card, CardContent, Typography, Button, Box } from '@mui/material';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import Navbar from '../Navbarr';
 
 const AdminDashboard = () => {
+  const navigate=useNavigate()
   const cardStyle = {
     maxWidth: 1800,
     margin: 'auto',
-    marginTop: '100px',
     padding: '20px',
     textAlign: 'center',
     backgroundColor:'#e0e1dd'
@@ -20,9 +21,14 @@ const AdminDashboard = () => {
     border:'solid',
     borderColor:'black'
   };
+  const Logout = () => {
+    localStorage.removeItem("User");
+    navigate("/");
+  };
 
   return (
     <div>
+      <Navbar />
       <Box sx={cardStyle}>
         <Card>
           <CardContent>
@@ -52,6 +58,13 @@ const AdminDashboard = () => {
               sx={buttonStyle}
             >
               Orders
+            </Button>
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={Logout}
+            >
+              Logout
             </Button>
           </CardContent>
         </Card>

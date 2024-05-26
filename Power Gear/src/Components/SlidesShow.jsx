@@ -23,7 +23,7 @@ const SlidesShow = () => {
         </div>
         <div>
           <img src="../../src/assets/Images/sposor.png" alt="Slide 2" style={{ width: '100%', height: 'auto' }} />
-          <h1 style={{textAlign:'center',color:"#023047"}}>Contact us for sporsorship requests</h1>
+          <h1 style={{textAlign:'center',color:"#023047"}}>Contact us for sponsorship requests</h1>
         </div>
         
       </Slider>

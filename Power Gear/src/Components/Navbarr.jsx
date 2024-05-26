@@ -35,11 +35,13 @@ const Navbar = () => {
           <Button color="inherit" component={Link} to="/about">
             About
           </Button>
-          {user ? (
+          {user ?<>{user.role==="user"?(
             <Button color="inherit" component={Link} to="/profile">
               Profile
             </Button>
-          ) : (
+          ): <Button color="inherit" component={Link} to="/admin">
+          Dashboard
+        </Button>}</> : (
             <Button color="inherit" component={Link} to="/login">
               Login
             </Button>

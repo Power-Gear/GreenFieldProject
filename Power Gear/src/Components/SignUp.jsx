@@ -53,7 +53,7 @@ function SignUp() {
                             value={username}
                             onChange={(e) => setUsername(e.target.value)}
                             required
-                        />e
+                        />
                         <TextField
                             fullWidth
                             type="email"

@@ -26,8 +26,10 @@ const User = connection.define('User', {
   Phone:{
     type:DataTypes.INTEGER,
     allowNull:false
-  }
-  
+  },
+  role:{type: DataTypes.ENUM("user", "admin"),
+  defaultValue: "user",
+  allowNull: false,}
 });
 return User
 }
